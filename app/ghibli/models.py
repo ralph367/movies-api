@@ -8,7 +8,6 @@ class Films(models.Model):
     producer = models.CharField(max_length=200, default=None)
     release_date = models.CharField(max_length=200, default=None)
     rt_score = models.CharField(max_length=200, default=None)
-    people = models.CharField(max_length=200, default=None)
     species = models.CharField(max_length=200, default=None)
     locations = models.CharField(max_length=200, default=None)
     vehicles = models.CharField(max_length=200, default=None)
