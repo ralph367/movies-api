@@ -26,6 +26,8 @@ Once done change your directory to the app folder in this repository and run:
 python manage.py runserver
 ```
 
+Then just access the following address to get a plain list of the movies and characters : http://127.0.0.1:8000/movies/
+
 ## Documentation
 
 ### Django
