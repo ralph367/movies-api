@@ -16,8 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from ghibli.routers import router
+from django.views.generic import TemplateView
+from ghibli import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls), name='api'),
+    path('movies/', views.MovieView.as_view()),
 ]

@@ -6,23 +6,26 @@ from .utils import Utils
 
 utils = Utils()
 
+
 class FilmViewSet(viewsets.ModelViewSet):
     queryset = Films.objects.all()
     serializer_class = FilmSerializer
+    film_url = "https://ghibliapi.herokuapp.com/films"
+    people_url = "https://ghibliapi.herokuapp.com/people"
 
     def list(self, request):
-        utils.UpdateGhibli("https://ghibliapi.herokuapp.com/films", "https://ghibliapi.herokuapp.com/people")
-        queryset = Films.objects.all()
-        serializer = FilmSerializer(queryset, many=True)
+        utils.UpdateGhibli(self.film_url, self.people_url)
+        serializer = FilmSerializer(self.queryset, many=True)
         return Response(serializer.data)
 
 
 class PeopleViewSet(viewsets.ModelViewSet):
     queryset = Peoples.objects.all()
     serializer_class = PeopleSerializer
+    film_url = "https://ghibliapi.herokuapp.com/films"
+    people_url = "https://ghibliapi.herokuapp.com/people"
 
     def list(self, request):
-        utils.UpdateGhibli("https://ghibliapi.herokuapp.com/films", "https://ghibliapi.herokuapp.com/people")
-        queryset = Peoples.objects.all()
-        serializer = PeopleSerializer(queryset, many=True)
+        utils.UpdateGhibli(self.film_url, self.people_url)
+        serializer = PeopleSerializer(self.queryset, many=True)
         return Response(serializer.data)

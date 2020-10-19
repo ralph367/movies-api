@@ -13,9 +13,9 @@ apiclient = APIClient()
 class GetGhibleDataTest(TestCase):
     def setUp(self):
         self.valid_film_url = "https://ghibliapi.herokuapp.com/films"
-        self.invalid_film_url = "https://ghibliapi.herokuapp.com/films_invalid"
+        self.invalid_film_url = "https://ghibliapi.herokuapp.com/films_inv"
         self.valid_people_url = "https://ghibliapi.herokuapp.com/people"
-        self.invalid_people_url = "https://ghibliapi.herokuapp.com/people_invalid"
+        self.invalid_people_url = "https://ghibliapi.herokuapp.com/people_inv"
 
     def test_valid_url(self):
         response = utils.UpdateGhibli(
@@ -54,7 +54,13 @@ class UtilsUnitTests(TestCase):
             "peoples": [],
             "id": "2baf70d1-42bb-4437-b551-e5fed5a87abe",
             "title": "Castle in the Sky",
-            "description": "The orphan Sheeta inherited a mysterious crystal that links her to the mythical sky-kingdom of Laputa. With the help of resourceful Pazu and a rollicking band of sky pirates, she makes her way to the ruins of the once-great civilization. Sheeta and Pazu must outwit the evil Muska, who plans to use Laputa's science to make himself ruler of the world.",
+            "description": "The orphan Sheeta inherited a mysterious crystal \
+                that links her to the mythical sky-kingdom of Laputa. With \
+                the help of resourceful Pazu and a rollicking band of sky \
+                pirates, she makes her way to the ruins of the once-great \
+                civilization. Sheeta and Pazu must outwit the evil Muska, \
+                who plans to use Laputa's science to make himself ruler of \
+                the world.",
             "director": "Hayao Miyazaki",
             "producer": "Isao Takahata",
             "release_date": "1986",
@@ -68,7 +74,13 @@ class UtilsUnitTests(TestCase):
             "peoples": [],
             "id": "2baf70d1-42bb-4437-b551-e5fed5a87abe",
             "title": "Castle in the Skyy",
-            "description": "The orphan Sheeta inherited a mysterious crystal that links her to the mythical sky-kingdom of Laputa. With the help of resourceful Pazu and a rollicking band of sky pirates, she makes her way to the ruins of the once-great civilization. Sheeta and Pazu must outwit the evil Muska, who plans to use Laputa's science to make himself ruler of the world.",
+            "description": "The orphan Sheeta inherited a mysterious crystal \
+                that links her to the mythical sky-kingdom of Laputa. With \
+                the help of resourceful Pazu and a rollicking band of sky \
+                pirates, she makes her way to the ruins of the once-great \
+                civilization. Sheeta and Pazu must outwit the evil Muska, \
+                who plans to use Laputa's science to make himself ruler of \
+                the world.",
             "director": "Hayao Miyazaki",
             "producer": "Isao Takahata",
             "release_date": "1986",
@@ -148,4 +160,4 @@ class UtilsUnitTests(TestCase):
         peoples = Peoples.objects.get(id=self.valid_people_payload[0]['id'])
         serializer = PeopleSerializer(peoples, many=False)
         self.assertEqual(
-            self.valid_people_payload_invalid_film[0], serializer.data)
+            self.valid_people_payload_invalid_film[0], serializer.data)    

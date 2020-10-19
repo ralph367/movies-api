@@ -1,0 +1,8 @@
+{% for movie in movies %}
+    <p> Movie Name: {{movie.title}} </p>
+    <p> "{{movie.title}}" characters: </p>
+    {% for person in movie.peoples %}
+        <p> - {{person.name}} </p>
+    {% endfor %}
+    <hr>
+{% endfor %}

@@ -21,7 +21,8 @@ class Utils:
             except requests.exceptions.RequestException as e:
                 print(e)
 
-            if (films_response.status_code == 200 and people_response.status_code == 200):
+            if (films_response.status_code == 200 and
+                    people_response.status_code == 200):
                 self.CreateUpdateFilms(films_response.json())
                 self.CreateUpdatePeople(people_response.json())
                 self.last_updated_time = datetime.now()
@@ -29,7 +30,6 @@ class Utils:
             return Response(status=status.HTTP_400_BAD_REQUEST)
         else:
             return Response(status=status.HTTP_200_OK)
-
 
     def CreateUpdateFilms(self, json_data):
         for data in json_data:
@@ -71,5 +71,3 @@ class Utils:
                 except Films.DoesNotExist:
                     film = None
                 person.films.add(film)
-                
-            
